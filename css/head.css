@@ -1,0 +1,83 @@
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    height: 200px;
+    margin-bottom: 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+    padding: 0.5rem 0;
+}
+
+nav a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.1rem;
+}
+
+nav a:hover {
+    color:#b81a1a;
+    text-decoration: underline;
+}
+
+/* 登录注册 */
+.reg{
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+    padding: 0.5rem 0;
+}
+
+.reg span{
+    color: #000;
+    text-decoration: none;
+    text-align: right;
+    margin: 0 1rem;
+    font-size: 1.1rem;
+}
+
+.reg a{
+    color: #000;
+    text-decoration: none;
+    text-align: right;
+    margin: 0 1rem;
+    font-size: 1.1rem;
+}
+
+.reg a:hover{
+    color:#b81a1a;
+    text-decoration: underline;
+}
+
+header h1 {
+    margin-bottom: 2.5rem;
+}
+
+/* 搜索栏样式 */
+.search-bar {
+    text-align: center;
+    margin: 1rem 0;
+    
+}
+
+.search-bar input {
+    padding: 0.5rem;
+    width: 40%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

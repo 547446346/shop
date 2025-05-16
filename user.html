@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理</title>
+    <link rel="stylesheet" type="text/css" href="css/user.css">
+</head>
+<body>
+    <!-- head.html -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('head.html')
+            .then(response => response.text())
+            .then(data => {
+                const placeholder = document.getElementById('header-placeholder');
+                placeholder.innerHTML = data;
+
+                // 手动执行插入的脚本
+                const scripts = placeholder.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        // 如果是外部脚本，重新加载
+                        newScript.src = script.src;
+                    } else {
+                        // 如果是内联脚本，复制内容
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
+            })
+            .catch(error => console.error('Error loading head.html:', error));
+    </script>
+    <div class="profile-container">
+
+    </div>
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('信息已保存！');
+        });
+    </script>
+
+        <!-- foot.html -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('foot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading foot.html:', error));
+    </script>
+</body>
+</html>

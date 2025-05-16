@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情</title>
+    <link rel="stylesheet" type="text/css" href="css/product_page.css">
+</head>
+
+<body>
+    <!-- head.html -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('head.html')
+            .then(response => response.text())
+            .then(data => {
+                const placeholder = document.getElementById('header-placeholder');
+                placeholder.innerHTML = data;
+
+                // 手动执行插入的脚本
+                const scripts = placeholder.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        // 如果是外部脚本，重新加载
+                        newScript.src = script.src;
+                    } else {
+                        // 如果是内联脚本，复制内容
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
+            })
+            .catch(error => console.error('Error loading head.html:', error));
+    </script>
+
+    <div class="product-container">
+        <!-- 左侧商品图片 -->
+        <div class="product-image">
+            <img id="productImage" src="https://via.placeholder.com/400" alt="商品图片">
+        </div>
+        <!-- 右侧商品详情 -->
+        <div class="product-details">
+            <h1 id="productName">商品名称</h1>
+            <p id="productPrice">￥0.00</p>
+            <div class="quantity-control">
+                <label for="quantity">购买数量</label>
+
+                <button class="decrease-quantity">-</button>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button class="increase-quantity">+</button>
+                <div class="quantity-buttons"></div>
+
+                <script>
+                    document.querySelector('.decrease-quantity').addEventListener('click', () => {
+                        const quantityInput = document.getElementById('quantity');
+                        const currentValue = parseInt(quantityInput.value, 10);
+                        if (currentValue > 1) {
+                            quantityInput.value = currentValue - 1;
+                        }
+                    });
+
+                    document.querySelector('.increase-quantity').addEventListener('click', () => {
+                        const quantityInput = document.getElementById('quantity');
+                        const currentValue = parseInt(quantityInput.value, 10);
+                        quantityInput.value = currentValue + 1;
+                    });
+                </script>
+            </div>
+
+            <div class="action-buttons">
+                <button class="add-to-cart">加入购物车</button>
+                <button class="buy-now">立即购买</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取 URL 中的查询参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // 模拟商品数据
+        const products = {
+            1: {
+                name: "商品1",
+                price: "￥100.00",
+                image: "https://via.placeholder.com/400?text=商品1"
+            },
+            2: {
+                name: "商品2",
+                price: "￥200.00",
+                image: "https://via.placeholder.com/400?text=商品2"
+            },
+            3: {
+                name: "商品3",
+                price: "￥300.00",
+                image: "https://via.placeholder.com/400?text=商品3"
+            }
+        };
+
+        // 根据 productId 更新页面内容
+        if (products[productId]) {
+            document.getElementById('productName').textContent = products[productId].name;
+            document.getElementById('productPrice').textContent = products[productId].price;
+            document.getElementById('productImage').src = products[productId].image;
+        } else {
+            document.querySelector('.product-container').innerHTML = '<p style="text-align: center; padding: 2rem;">商品未找到！</p>';
+        }
+    </script>
+
+    <!-- foot.html -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('foot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading foot.html:', error));
+    </script>
+</body>
+
+</html>

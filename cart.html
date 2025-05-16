@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+    <!-- head.html -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('head.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading head.html:', error));
+    </script>
+
+    <div class="shopping_middle">
+        <div class="sp_top">
+            <img src="../images/cart.jpg" alt="">
+            <span>我的购物车</span>
+        </div>
+        <div class="sop_tit">
+            <span class="sop_word_a">商品</span>
+            <span class='sop_word_b'>单价</span>
+            <span class='sop_word_c'>优惠</span>
+            <span class='sop_word_d'>数量(件)</span>
+            <span class='sop_word_e'>重量(kg)</span>
+            <span class='sop_word_f'>小计</span>
+            <span class='sop_word_g'>操作</span>
+        </div>
+        <div class="sop_jst">
+            <input class='sop_jsta' type="checkbox">
+            <img class='sop_jstb' src="../images/cart_product.jpg" height="67" width="41" alt="">
+            <span class='sop_jstc'>金龙鱼盘锦大米5kg</span>
+            <span class='sop_jstd'>￥38.50</span>
+            <span class='sop_jste'>---</span>
+            <div class="sop_jstga">
+                <button class='sop_jstgb' onclick="decreaseQuantity(this)">-</button>
+                <span class='sop_jstgc'>1</span>
+                <button class='sop_jstgb' onclick="increaseQuantity(this)">+</button>
+                <script>
+                    function decreaseQuantity(element) {
+                        const quantitySpan = element.nextElementSibling;
+                        let quantity = parseInt(quantitySpan.textContent);
+                        if (quantity > 1) {
+                            quantity--;
+                            quantitySpan.textContent = quantity;
+                            updateSubtotal(element, quantity);
+                        }
+                    }
+
+                    function increaseQuantity(element) {
+                        const quantitySpan = element.previousElementSibling;
+                        let quantity = parseInt(quantitySpan.textContent);
+                        quantity++;
+                        quantitySpan.textContent = quantity;
+                        updateSubtotal(element, quantity);
+                    }
+
+                    function updateSubtotal(element, quantity) {
+                        const priceElement = element.closest('.sop_jst').querySelector('.sop_jstd');
+                        const subtotalElement = element.closest('.sop_jst').querySelector('.sop_jstge');
+                        const price = parseFloat(priceElement.textContent.replace('￥', ''));
+                        const subtotal = (price * quantity).toFixed(2);
+                        subtotalElement.textContent = `￥${subtotal}`;
+                    }
+                </script>
+            </div>
+            <span class='sop_jstgd'>5.0</span>
+            <span class='sop_jstge'>￥38.5</span>
+            <p class="sop_jstgf">收藏</p>
+            <p class="sop_jstgg">删除</p>
+        </div>
+        <div class="all_qx">
+            <input class='all_qxa' type="checkbox">
+            <span class='all_qxb'>全选</span>
+            <script>
+                function updateTotal() {
+                    const subtotalElements = document.querySelectorAll('.sop_jstge');
+                    let total = 0;
+                    subtotalElements.forEach(element => {
+                        total += parseFloat(element.textContent.replace('￥', ''));
+                    });
+                    document.querySelector('.all_qxf').textContent = `￥${total.toFixed(2)}`;
+                }
+
+                updateTotal();
+
+                document.querySelectorAll('.sop_jstgb').forEach(button => {
+                    button.addEventListener('click', () => {
+                        updateTotal();
+                    });
+                });
+            </script>
+        </div>
+        <div class="payment">
+            <span class='paymenta'>应付金额(不含运费)：</span>
+            <span class='paymentb'>￥0</span>
+            <script>
+                function updateTotal() {
+                    const subtotalElements = document.querySelectorAll('.sop_jstge');
+                    let total = 0;
+                    subtotalElements.forEach(element => {
+                        total += parseFloat(element.textContent.replace('￥', ''));
+                    });
+                    document.querySelector('.paymentb').textContent = `￥${total.toFixed(2)}`;
+                }
+
+                updateTotal();
+
+                document.querySelectorAll('.sop_jstgb').forEach(button => {
+                    button.addEventListener('click', () => {
+                        updateTotal();
+                    });
+                });
+            </script>
+        </div>
+        <div class="conshop">
+            <button class="conshop_lt" id="btn">
+                <a href="/home_page.html"><span class='conshop_lttext'>继续购物</span></a>
+            </button>
+        </div>
+        <div class="settlement">
+            <button class="settlement_button">
+                <a href="#.html"><span class='settlement_text'>结算</span></a>
+            </button>
+        </div>
+    </div>
+
+    <!-- foot.html -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('foot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading foot.html:', error));
+    </script>
+</body>
+
+</html>

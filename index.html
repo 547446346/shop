@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/head.css">
+</head>
+
+<body>
+    <!-- head.html -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('head.html')
+            .then(response => response.text())
+            .then(data => {
+                const placeholder = document.getElementById('header-placeholder');
+                placeholder.innerHTML = data;
+
+                // 手动执行插入的脚本
+                const scripts = placeholder.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        // 如果是外部脚本，重新加载
+                        newScript.src = script.src;
+                    } else {
+                        // 如果是内联脚本，复制内容
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
+            })
+            .catch(error => console.error('Error loading head.html:', error));
+    </script>
+
+    <div class="category-promo">
+        <!-- 左侧商品分类 -->
+        <aside class="category-list">
+            <h3>商品分类</h3>
+            <ul>
+                <li>
+                    <a href="#">生鲜食品</a>
+                </li>
+                <li>
+                    <a href="#">食品粮油</a>
+                </li>
+                <li>
+                    <a href="#">酒水冲饮</a>
+                </li>
+                <li>
+                    <a href="#">美容护理</a>
+                </li>
+                <li>
+                    <a href="#">家清</a>
+                    <a href="#">纸品</a>
+                    <a href="#">一次性</a>
+                </li>
+                <li>
+                    <a href="#">手机数码</a>
+                    <a href="#">电脑办公</a>
+                </li>
+                <li>
+                    <a href="#">家用电器</a>
+                </li>
+                <li>
+                    <a href="#">母婴玩具</a>
+                </li>
+                <li>
+                    <a href="#">营养保健</a>
+                </li>
+                <li>
+                    <a href="#">餐厨用具</a>
+                    <a href="#">家居家装</a>
+                </li>
+                <li>
+                    <a href="#">女装男装</a>
+                </li>
+                <li>
+                    <a href="#">鞋靴箱包</a>
+                    <a href="#">珠宝饰品</a>
+                </li>
+                <li>
+                    <a href="#">运动户外</a>
+                    <a href="#">汽车用品</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- 右侧商品宣传缩略图 -->
+        <div class="slider">
+            <a href="#" class="slide">
+                <img src="images/slide_a.jpg" alt="">
+                <p>发现最好的商品，享受最实惠的价格</p>
+            </a>
+            <a href="#" class="slide">
+                <img src="images/slide_b.jpg" alt="">
+                <p>发现最好的商品，享受最实惠的价格</p>
+            </a>
+            <a href="#" class="slide">
+                <img src="images/slide_c.jpg" alt="">
+                <p>发现最好的商品，享受最实惠的价格</p>
+            </a>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var slides = document.querySelectorAll('.slider .slide');
+
+                    slides.forEach(function (slide) {
+                        slide.style.display = 'none';
+                    });
+
+                    var currentSlide = 0;
+                    slides[currentSlide].style.display = 'block';
+
+                    setInterval(function () {
+                        slides[currentSlide].style.display = 'none';
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        slides[currentSlide].style.display = 'block';
+                    }, 3000);
+                });
+            </script>
+
+        </div>
+    </div>
+
+    <section class="products">
+        <div class="product">
+            <a href="product_page.html?id=1" target="_blank">
+                <img src="images/product1.png" alt="商品1">
+                <h3>商品1</h3>
+                <p>￥100.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=2" target="_blank">
+                <img src="images/product1.png" alt="商品2">
+                <h3>商品2</h3>
+                <p>￥200.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=3" target="_blank">
+                <img src="images/product1.png" alt="商品3">
+                <h3>商品3</h3>
+                <p>￥300.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=4" target="_blank">
+                <img src="images/product1.png" alt="商品4">
+                <h3>商品4</h3>
+                <p>￥400.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=5" target="_blank">
+                <img src="images/product1.png" alt="商品5">
+                <h3>商品5</h3>
+                <p>￥500.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=6" target="_blank">
+                <img src="images/product1.png" alt="商品6">
+                <h3>商品6</h3>
+                <p>￥229.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=7" target="_blank">
+                <img src="images/product1.png" alt="商品7">
+                <h3>商品7</h3>
+                <p>￥79.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=8" target="_blank">
+                <img src="images/product1.png" alt="商品8">
+                <h3>商品8</h3>
+                <p>￥139.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=9" target="_blank">
+                <img src="images/product1.png" alt="商品9">
+                <h3>商品9</h3>
+                <p>￥28.00</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="product_page.html?id=10" target="_blank">
+                <img src="images/product1.png" alt="商品10">
+                <h3>商品10</h3>
+                <p>￥99.00</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- foot.html -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('foot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading foot.html:', error));
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+.shopping_top {
+    background: #f3f3f3;
+    height: 28px;
+    font: 12px '宋体';
+    line-height: 28px;
+    word-spacing: 8px;
+
+}
+
+.shopping_middle {
+    width: 1200px;
+    margin: 0px auto;
+    margin-top: 23px;
+}
+
+.sp_top img {
+    background: #ccc;
+}
+
+.sp_top span {
+    position: relative;
+    top: -10px;
+    font: 25px '微软雅黑';
+    color: #333;
+    margin-left: 10px;
+}
+
+.sop_tit {
+    width: 1200px;
+    height: 48px;
+    background: url(../images/cart_col.jpg);
+}
+
+
+.sop_word_a {
+    font: bold 16px '黑体';
+    color: #000;
+    height: 48px;
+    letter-spacing: 3px;
+    position: absolute;
+    left: 166px;
+}
+
+.sop_word_b {
+    font: bold 16px '黑体';
+    color: #000;
+    height: 48px;
+    letter-spacing: 3px;
+    position: absolute;
+    left: 600px;
+}
+
+.sop_word_c {
+    font: bold 16px '黑体';
+    color: #000;
+    height: 48px;
+    letter-spacing: 3px;
+    position: absolute;
+    left: 767px;
+}
+
+.sop_word_d {
+    font: bold 16px '黑体';
+    color: #000;
+    height: 48px;
+    letter-spacing: 3px;
+    position: absolute;
+    right: 445px;
+}
+
+.sop_word_e {
+    font: bold 16px '黑体';
+    color: #000;
+    height: 48px;
+    letter-spacing: 3px;
+    position: absolute;
+    right: 307px;
+}
+
+.sop_word_f {
+    font: bold 16px '黑体';
+    color: #000;
+    height: 48px;
+    letter-spacing: 3px;
+    position: absolute;
+    right: 227px;
+}
+
+.sop_word_g {
+    font: bold 16px '黑体';
+    color: #000;
+    height: 48px;
+    letter-spacing: 3px;
+    position: absolute;
+    right: 131px;
+}
+
+.sop_jst {
+    width: 1200px;
+    height: 130px;
+    border: 1px solid #ececf0;
+    border-top: none;
+    position: relative;
+}
+
+.sop_jsta {
+    position: absolute;
+    background: #f00;
+    left: 23px;
+    top: 49px;
+}
+
+.sop_jstb {
+    position: absolute;
+    left: 82px;
+    top: 22px;
+}
+
+.sop_jstc {
+    position: absolute;
+    left: 158px;
+    top: 25px;
+    font: 12px '宋体';
+    color: #666;
+}
+
+.sop_jstd {
+    position: absolute;
+    left: 475px;
+    top: 38px;
+    font: bold 12px '黑体';
+    color: #f00;
+}
+
+.sop_jste {
+    position: absolute;
+    left: 660px;
+    top: 35px;
+    color: #000;
+}
+
+.sop_jstga {
+    position: absolute;
+    top: 35px;
+    right: 323px;
+}
+
+.sop_jstgb {
+    border: 1px solid #ececec;
+    width: 20px;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    font: 13px;
+    color: #555;
+}
+
+.sop_jstgc {
+    border: 1px solid #ccc;
+    margin-bottom: 18px;
+    width: 39px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    font: 13px;
+    color: #999;
+    vertical-align: middle;
+}
+
+.sop_jstgd {
+    position: absolute;
+    right: 232px;
+    top: 35px;
+    font: 12px '宋体';
+    color: #000;
+}
+
+.sop_jstge {
+    position: absolute;
+    right: 120px;
+    top: 35px;
+    font: bold 12px '宋体';
+    color: #f00;
+}
+
+.sop_jstgf {
+    position: absolute;
+    right: 32px;
+    top: 35px;
+    font: 12px '宋体';
+    color: #f00;
+}
+
+.sop_jstgg {
+    position: absolute;
+    right: 32px;
+    top: 59px;
+    font: 12px '宋体';
+    color: #000;
+}
+
+.all_qx {
+    position: relative;
+    width: 1200px;
+    height: 62px;
+    border-bottom: 2px solid #d84046;
+    font: bold 16px '微软雅黑';
+    color: #6a6a6a;
+}
+
+.all_qxa {
+    position: absolute;
+    left: 22px;
+    top: 24px;
+}
+
+.all_qxb {
+    position: absolute;
+    top: 6px;
+    left: 59px;
+    color:#000;
+}
+
+.payment {
+    position: relative;
+}
+
+.paymenta {
+    position: absolute;
+    right: 105px;
+    top: 18px;
+    font: 14px '宋体';
+    color: #000;
+}
+
+.paymentb {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    font: bold 23px '微软雅黑';
+    color: #e9001c;
+}
+
+.conshop {
+    position: absolute;
+    margin-top: 20px;
+}
+
+.conshop_lt {
+    position: relative;
+    width: 138px;
+    height: 40px;
+    background: #fffbf7;
+    border: 1px solid #e4dad6;
+    top: 70px;
+    font: bold 20px '微软雅黑';
+    color: #ce1018;
+}
+
+.conshop_lttext {
+    color:#ce1018;
+    position: absolute;
+    bottom: 6px;
+    left: 25px;
+    z-index: 5;
+}
+
+.settlement {
+    position: relative;
+    height: 128px;
+    margin-top: 20px;
+}
+
+.settlement_button {
+    width: 140px;
+    height: 40px;
+    background: #da1021;
+    border: 0px;
+    position: absolute;
+    right: 0px;
+    top: 70px;
+}
+
+.settlement_text {
+    font: bold 20px '微软雅黑';
+    color: #fff;
+    position: absolute;
+    left: 50px;
+    letter-spacing: 2px;
+    bottom: 8px;
+}
+
+.settlement_c {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+}
