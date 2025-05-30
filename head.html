@@ -7,8 +7,7 @@
 
 <body>
     <!-- 顶部栏 -->
-    <div
-        style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; background-color: #f4f4f4;">
+    <div class="top_bar">
         <nav>
             <a href="/index.html">首页</a>
             <a href="#">商品分类</a>
@@ -41,11 +40,9 @@
     </div>
     <header>
         <h1>在线购物网站</h1>
-        <div style="text-align: center; margin: 1rem 0;">
-            <input type="text" id="searchBar" placeholder="搜索商品..."
-                style="padding: 0.5rem; width: 40%; border: 1px solid #ddd; border-radius: 5px;">
-            <button onclick="searchProducts()"
-                style="padding: 0.5rem 1rem; background-color: #da1021; color: #fff; border: none; border-radius: 5px; cursor: pointer;">搜索</button>
+        <div class="search-bar">
+            <input type="text" id="searchBar" placeholder="搜索商品...">
+            <button onclick="searchProducts()">搜索</button>
         </div>
 
         <script>

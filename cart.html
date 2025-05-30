@@ -14,7 +14,22 @@
         fetch('head.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
+                const placeholder = document.getElementById('header-placeholder');
+                placeholder.innerHTML = data;
+
+                // 手动执行插入的脚本
+                const scripts = placeholder.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        // 如果是外部脚本，重新加载
+                        newScript.src = script.src;
+                    } else {
+                        // 如果是内联脚本，复制内容
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
             })
             .catch(error => console.error('Error loading head.html:', error));
     </script>

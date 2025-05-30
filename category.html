@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品分类</title>
+    <link rel="stylesheet" href="css/category.css">
+</head>
+
+<body>
+    <!-- head.html -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('head.html')
+            .then(response => response.text())
+            .then(data => {
+                const placeholder = document.getElementById('header-placeholder');
+                placeholder.innerHTML = data;
+
+                // 手动执行插入的脚本
+                const scripts = placeholder.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        // 如果是外部脚本，重新加载
+                        newScript.src = script.src;
+                    } else {
+                        // 如果是内联脚本，复制内容
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
+            })
+            .catch(error => console.error('Error loading head.html:', error));
+    </script>
+
+    <div class="category-container">
+        <aside class="category-list">
+            <h2>商品分类</h2>
+            <ul id="categoryMenu">
+                <li class="active" data-category="all">全部</li>
+                <li data-category="电子产品">电子产品</li>
+                <li data-category="服饰">服饰</li>
+                <li data-category="家居">家居</li>
+            </ul>
+        </aside>
+        <main class="product-list" id="productList">
+            <!-- 商品列表由JS渲染 -->
+        </main>
+    </div>
+    <script>
+        // 模拟商品数据
+        const products = [
+            { id: 1, name: "智能手机", category: "电子产品", price: "￥1999", img: "https://via.placeholder.com/150?text=手机" },
+            { id: 2, name: "蓝牙耳机", category: "电子产品", price: "￥299", img: "https://via.placeholder.com/150?text=耳机" },
+            { id: 3, name: "T恤", category: "服饰", price: "￥99", img: "https://via.placeholder.com/150?text=T恤" },
+            { id: 4, name: "沙发", category: "家居", price: "￥899", img: "https://via.placeholder.com/150?text=沙发" },
+            { id: 5, name: "连衣裙", category: "服饰", price: "￥199", img: "https://via.placeholder.com/150?text=连衣裙" }
+        ];
+
+        function renderProducts(category) {
+            const list = document.getElementById('productList');
+            let filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            if (filtered.length === 0) {
+                list.innerHTML = "<p>该分类下暂无商品。</p>";
+                return;
+            }
+            list.innerHTML = filtered.map(p => `
+                <div class="product-card">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <p>${p.price}</p>
+                </div>
+            `).join('');
+        }
+
+        // 分类点击事件
+        document.getElementById('categoryMenu').addEventListener('click', function (e) {
+            if (e.target.tagName === 'LI') {
+                document.querySelectorAll('#categoryMenu li').forEach(li => li.classList.remove('active'));
+                e.target.classList.add('active');
+                renderProducts(e.target.dataset.category);
+            }
+        });
+
+        // 默认显示全部
+        renderProducts('all');
+    </script>
+
+    <!-- foot.html -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('foot.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading foot.html:', error));
+    </script>
+</body>
+
+</html>

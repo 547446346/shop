@@ -38,7 +38,7 @@
     <div class="product-container">
         <!-- 左侧商品图片 -->
         <div class="product-image">
-            <img id="productImage" src="https://via.placeholder.com/400" alt="商品图片">
+            <img id="productImage" src="images/" alt="商品图片">
         </div>
         <!-- 右侧商品详情 -->
         <div class="product-details">
@@ -86,7 +86,7 @@
             1: {
                 name: "商品1",
                 price: "￥100.00",
-                image: "https://via.placeholder.com/400?text=商品1"
+                image: "images/product1.png"
             },
             2: {
                 name: "商品2",
@@ -108,6 +108,105 @@
         } else {
             document.querySelector('.product-container').innerHTML = '<p style="text-align: center; padding: 2rem;">商品未找到！</p>';
         }
+    </script>
+
+    </div>
+    <div class="product-extra-section">
+        <!-- also-viewed -->
+        <div class="also-viewed">
+            <h2>看了又看</h2>
+            <ul>
+                <li>
+                    <a href="product_page.html?id=1">
+                        <img src="images/product1.png"></img>
+                        <h3>商品1</h3>
+                        <p>￥100.00</p>
+                    </a>
+                </li>
+                <li><a href="product_page.html?id=2">
+                    <img src="images/product1.png"></img>
+                        <h3>商品2</h3>
+                        <p>￥200.00</p>
+                </a></li>
+                <li><a href="product_page.html?id=3">
+                    <img src="images/product1.png"></img>
+                        <h3>商品3</h3>
+                        <p>￥300.00</p>
+                </a></li>
+            </ul>
+        </div>
+        <!-- product-info -->
+        <div class="product-tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="desc">商品介绍</button>
+                <button class="tab-btn" data-tab="params">参数及包装</button>
+                <button class="tab-btn" data-tab="service">售后服务</button>
+                <button class="tab-btn" data-tab="comments">评论</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-panel" id="desc-panel"></div>
+                <div class="tab-panel" id="params-panel" style="display:none;"></div>
+                <div class="tab-panel" id="service-panel" style="display:none;"></div>
+                <div class="tab-panel" id="comments-panel" style="display:none;"></div>
+            </div>
+            <script>
+                // 商品详情内容数据
+                const productDetails = {
+                    1: {
+                        desc: "商品1的详细介绍内容。",
+                        params: "商品1的参数及包装信息。",
+                        service: "商品1的售后服务说明。",
+                        comments: "商品1的评论内容。"
+                    },
+                    2: {
+                        desc: "商品2的详细介绍内容。",
+                        params: "商品2的参数及包装信息。",
+                        service: "商品2的售后服务说明。",
+                        comments: "商品2的评论内容。"
+                    },
+                    3: {
+                        desc: "商品3的详细介绍内容。",
+                        params: "商品3的参数及包装信息。",
+                        service: "商品3的售后服务说明。",
+                        comments: "商品3的评论内容。"
+                    }
+                };
+
+                // 根据 productId 更新 tab-panel 内容
+                if (productDetails[productId]) {
+                    document.getElementById('desc-panel').textContent = productDetails[productId].desc;
+                    document.getElementById('params-panel').textContent = productDetails[productId].params;
+                    document.getElementById('service-panel').textContent = productDetails[productId].service;
+                    document.getElementById('comments-panel').textContent = productDetails[productId].comments;
+                } else {
+                    document.getElementById('desc-panel').textContent = "暂无商品介绍。";
+                    document.getElementById('params-panel').textContent = "暂无参数及包装信息。";
+                    document.getElementById('service-panel').textContent = "暂无售后服务信息。";
+                    document.getElementById('comments-panel').textContent = "暂无评论。";
+                }
+            </script>
+        </div>
+    </div>
+
+    <script>
+        // tab切换逻辑
+        document.addEventListener('DOMContentLoaded', function () {
+            const btns = document.querySelectorAll('.tab-btn');
+            const panels = {
+                desc: document.getElementById('desc-panel'),
+                params: document.getElementById('params-panel'),
+                service: document.getElementById('service-panel'),
+                comments: document.getElementById('comments-panel')
+            };
+            btns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    btns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    Object.keys(panels).forEach(key => panels[key].style.display = 'none');
+                    panels[this.dataset.tab].style.display = 'block';
+                });
+            });
+        });
     </script>
 
     <!-- foot.html -->
